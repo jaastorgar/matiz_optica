@@ -1,0 +1,113 @@
+:root {
+    --verde-principal: #19A860;
+    --plomo-oscuro: #5A5A5A;
+    --plomo-claro: #CFCFCF;
+    --blanco: #FFFFFF;
+    --rojo-error: #D64541;
+}
+
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--blanco);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 420px;
+    margin: 60px auto;
+    padding: 32px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.08);
+}
+
+h2 {
+    text-align: center;
+    color: var(--verde-principal);
+    font-weight: 700;
+    margin-bottom: 24px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--plomo-oscuro);
+}
+
+input {
+    width: 100%;
+    padding: 12px;
+    margin-top: 4px;
+    margin-bottom: 14px;
+    border: 1px solid var(--plomo-claro);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus {
+    outline: none;
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 5px rgba(25,168,96,0.4);
+}
+
+.btn-submit {
+    width: 100%;
+    background: var(--verde-principal);
+    color: white;
+    padding: 12px;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #158e52;
+}
+
+.register-link {
+    text-align: center;
+    margin-top: 14px;
+    font-size: 14px;
+    color: var(--plomo-oscuro);
+}
+
+.register-link a {
+    color: var(--verde-principal);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.register-link a:hover {
+    text-decoration: underline;
+}
+
+/* mensajes de Django messages */
+.messages {
+    list-style: none;
+    padding-left: 0;
+    margin-bottom: 16px;
+}
+
+.message {
+    font-size: 13px;
+    padding: 8px 10px;
+    border-radius: 6px;
+    margin-bottom: 6px;
+}
+
+.message.error {
+    background-color: #ffe6e4;
+    color: var(--rojo-error);
+}
+
+.message.success {
+    background-color: #e7f9ef;
+    color: var(--verde-principal);
+}

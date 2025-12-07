@@ -1,0 +1,44 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Iniciar sesión – Óptica Matizvision</title>
+
+    <link rel="stylesheet" href="{% static 'accounts/css/login.css' %}">
+</head>
+<body>
+
+    <div class="container">
+        <h2>Iniciar sesión</h2>
+
+        {% if messages %}
+            <ul class="messages">
+                {% for message in messages %}
+                    <li class="message {{ message.tags }}">{{ message }}</li>
+                {% endfor %}
+            </ul>
+        {% endif %}
+
+        <form method="POST" id="loginForm">
+            {% csrf_token %}
+
+            <label>Correo electrónico</label>
+            {{ form.email }}
+
+            <label>Contraseña</label>
+            {{ form.password }}
+
+            <button type="submit" class="btn-submit">Ingresar</button>
+
+            <p class="register-link">
+                ¿No tienes cuenta?
+                <a href="{% url 'register' %}">Crear cuenta</a>
+            </p>
+        </form>
+    </div>
+
+    <script src="{% static 'accounts/js/login.js' %}"></script>
+</body>
+</html>

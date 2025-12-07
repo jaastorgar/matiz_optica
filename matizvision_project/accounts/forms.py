@@ -58,3 +58,17 @@ class RegisterForm(forms.ModelForm):
             profile.save()
 
         return user
+
+class LoginForm(forms.Form):
+    email = forms.EmailField(
+        label="Correo electrónico",
+        widget=forms.EmailInput(attrs={
+            "placeholder": "correo@ejemplo.cl"
+        })
+    )
+    password = forms.CharField(
+        label="Contraseña",
+        widget=forms.PasswordInput(attrs={
+            "placeholder": "Ingresa tu contraseña"
+        })
+    )
