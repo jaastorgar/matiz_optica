@@ -1,0 +1,106 @@
+/* ================================
+   PALETA CORPORATIVA MATIZVISION
+================================= */
+:root {
+    --verde-principal: #19A860;
+    --plomo-oscuro: #5A5A5A;
+    --plomo-claro: #CFCFCF;
+    --blanco: #FFFFFF;
+    --rojo-error: #D64541;
+}
+
+/* ================================
+   ESTILOS GENERALES
+================================= */
+body {
+    font-family: 'Montserrat', sans-serif;
+    background-color: var(--blanco);
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 100%;
+    max-width: 520px;
+    margin: 40px auto;
+    padding: 40px;
+    background: white;
+    border-radius: 14px;
+    box-shadow: 0px 4px 16px rgba(0,0,0,0.08);
+}
+
+h2 {
+    text-align: center;
+    color: var(--verde-principal);
+    font-weight: 700;
+    margin-bottom: 25px;
+}
+
+label {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--plomo-oscuro);
+}
+
+/* INPUTS y SELECTS */
+input, select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 4px;
+    margin-bottom: 14px;
+    border: 1px solid var(--plomo-claro);
+    border-radius: 8px;
+    font-size: 14px;
+    transition: border 0.2s ease, box-shadow 0.2s ease;
+}
+
+input:focus, select:focus {
+    outline: none;
+    border-color: var(--verde-principal);
+    box-shadow: 0 0 5px rgba(25,168,96,0.4);
+}
+
+/* RUN + DV */
+.run-group {
+    display: flex;
+    gap: 12px;
+}
+
+.run-group input:last-child {
+    width: 80px;
+}
+
+/* BOTÓN PRINCIPAL */
+.btn-submit {
+    width: 100%;
+    background: var(--verde-principal);
+    color: white;
+    padding: 14px;
+    border: none;
+    border-radius: 8px;
+    font-size: 17px;
+    font-weight: 700;
+    cursor: pointer;
+    margin-top: 12px;
+    transition: background 0.2s ease;
+}
+
+.btn-submit:hover {
+    background-color: #158e52;
+}
+
+/* ERRORES */
+.error-message {
+    color: var(--rojo-error);
+    font-size: 13px;
+    margin-top: -10px;
+    margin-bottom: 12px;
+}
+
+/* TÉRMINOS */
+.terms {
+    font-size: 13px;
+    margin-top: 15px;
+    color: var(--plomo-oscuro);
+    text-align: center;
+}

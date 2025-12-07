@@ -1,0 +1,81 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Crear Cuenta – Óptica Matizvision</title>
+
+    <!-- CSS externo -->
+    <link rel="stylesheet" href="{% static 'accounts/css/register.css' %}">
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h2>Crear una cuenta</h2>
+
+        <form method="POST" id="registerForm">
+            {% csrf_token %}
+
+            <label>Nombre completo</label>
+            {{ form.full_name }}
+
+            <label>RUN</label>
+            <div class="run-group">
+                {{ form.run }}
+                {{ form.dv }}
+            </div>
+
+            <label>Fecha de nacimiento</label>
+            {{ form.birth_date }}
+
+            <label>Teléfono</label>
+            {{ form.phone }}
+
+            <label>Correo electrónico</label>
+            {{ form.email }}
+
+            <label>Contraseña</label>
+            {{ form.password1 }}
+
+            <label>Confirmar contraseña</label>
+            {{ form.password2 }}
+
+            <!-- SELECT REGIÓN -->
+            <label>Región</label>
+            <select name="region" id="regionSelect" required>
+                <option value="">Seleccione región</option>
+            </select>
+
+            <!-- SELECT CIUDAD -->
+            <label>Ciudad</label>
+            <select name="city" id="citySelect" required>
+                <option value="">Seleccione ciudad</option>
+            </select>
+
+            <!-- SELECT COMUNA -->
+            <label>Comuna</label>
+            <select name="comuna" id="comunaSelect" required>
+                <option value="">Seleccione comuna</option>
+            </select>
+
+            <!-- DIRECCIÓN -->
+            <label>Dirección</label>
+            {{ form.address }}
+
+            <button type="submit" class="btn-submit">Crear cuenta</button>
+
+            <p class="terms">
+                Al crear una cuenta aceptas nuestras políticas y términos de uso.
+            </p>
+        </form>
+
+    </div>
+
+    <!-- JS externo -->
+    <script src="{% static 'accounts/js/register.js' %}"></script>
+
+</body>
+</html>
