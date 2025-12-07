@@ -1,0 +1,122 @@
+/* ================================
+   PALETA MATIZVISION
+================================ */
+
+:root {
+    --verde: #19A860;
+    --verde-oscuro: #158E52;
+    --verde-fondo: #F1FAF6;
+    --gris-oscuro: #5A5A5A;
+    --gris-claro: #CFCFCF;
+    --blanco: #FFFFFF;
+    --rojo: #E53935;
+}
+
+/* ================================
+   LINK VOLVER
+================================ */
+
+.back {
+    display: inline-block;
+    margin: 20px 30px;
+    color: var(--verde);
+    font-weight: 600;
+    text-decoration: none;
+}
+
+.back:hover {
+    color: var(--verde-oscuro);
+}
+
+/* ================================
+   CONTENEDOR PRINCIPAL
+================================ */
+
+.product-container {
+    display: flex;
+    justify-content: center;
+    gap: 60px;
+    padding: 40px 10%;
+    flex-wrap: wrap;
+}
+
+/* ================================
+   IMAGEN DEL PRODUCTO
+================================ */
+
+.image-box img {
+    width: 350px;
+    height: 350px;
+    object-fit: cover;
+    background: var(--gris-claro);
+    border-radius: 16px;
+    box-shadow: 0 4px 16px rgba(0,0,0,0.07);
+}
+
+/* ================================
+   INFORMACIÓN DEL PRODUCTO
+================================ */
+
+.info-box {
+    max-width: 400px;
+}
+
+.info-box h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--gris-oscuro);
+    margin-bottom: 8px;
+}
+
+.price {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--verde);
+    margin-bottom: 16px;
+}
+
+.desc {
+    color: var(--gris-oscuro);
+    line-height: 1.6;
+    margin-bottom: 22px;
+}
+
+/* ================================
+   BOTONES
+================================ */
+
+.btn-buy {
+    width: 100%;
+    background: var(--verde);
+    padding: 14px 18px;
+    border-radius: 10px;
+    color: white;
+    border: none;
+    font-size: 16px;
+    font-weight: 700;
+    cursor: pointer;
+    transition: 0.25s;
+}
+
+.btn-buy:hover {
+    background: var(--verde-oscuro);
+}
+
+.btn-login {
+    display: inline-block;
+    width: 100%;
+    text-align: center;
+    padding: 14px 18px;
+    border-radius: 10px;
+    border: 2px solid var(--verde);
+    color: var(--verde);
+    font-size: 16px;
+    font-weight: 700;
+    text-decoration: none;
+    transition: 0.25s;
+}
+
+.btn-login:hover {
+    background: var(--verde);
+    color: white;
+}

@@ -38,7 +38,7 @@ def login_view(request):
                 if user.is_active:
                     login(request, user)
                     messages.success(request, "Has iniciado sesión correctamente.")
-                    # return redirect("home")
+                    return redirect("home")
                 else:
                     messages.error(request, "Tu cuenta está inactiva. Contacta a la óptica.")
             else:
@@ -55,4 +55,4 @@ def login_view(request):
 def logout_view(request):
     logout(request)
     messages.success(request, "Has cerrado sesión correctamente.")
-    return redirect("login")
+    return redirect("home")

@@ -1,0 +1,34 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Tienda – Óptica Matizvision</title>
+    <link rel="stylesheet" href="{% static 'shop/css/shop.css' %}">
+</head>
+
+<body>
+
+    <h1 class="title">Tienda Matizvision</h1>
+
+    <!-- Categorías -->
+    <div class="categories">
+        {% for c in categorias %}
+            <a href="?categoria={{ c.slug }}" class="category">{{ c.nombre }}</a>
+        {% endfor %}
+    </div>
+
+    <!-- Productos -->
+    <div class="product-grid">
+        {% for p in productos %}
+        <a href="{% url 'product_detail' p.slug %}" class="product-card">
+            <img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">
+            <h3>{{ p.nombre }}</h3>
+            <p>${{ p.precio }}</p>
+        </a>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

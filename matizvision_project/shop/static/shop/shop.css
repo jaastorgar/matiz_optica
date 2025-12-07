@@ -1,0 +1,102 @@
+/* ================================
+   PALETA MATIZVISION
+================================ */
+
+:root {
+    --verde: #19A860;
+    --verde-oscuro: #158E52;
+    --verde-fondo: #F1FAF6;
+    --gris-oscuro: #5A5A5A;
+    --gris-claro: #CFCFCF;
+    --blanco: #FFFFFF;
+}
+
+/* ================================
+   TÍTULO PRINCIPAL
+================================ */
+
+.title {
+    text-align: center;
+    font-size: 32px;
+    font-weight: 800;
+    margin-top: 30px;
+    color: var(--verde);
+    letter-spacing: -0.5px;
+}
+
+/* ================================
+   CATEGORÍAS
+================================ */
+
+.categories {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    margin: 20px 0 30px;
+    flex-wrap: wrap;
+}
+
+.category {
+    padding: 10px 18px;
+    font-weight: 600;
+    text-decoration: none;
+    border-radius: 8px;
+    background: var(--verde);
+    color: var(--blanco);
+    transition: 0.2s;
+}
+
+.category:hover {
+    background: var(--verde-oscuro);
+}
+
+/* ================================
+   GRID DE PRODUCTOS
+================================ */
+
+.product-grid {
+    display: flex;
+    justify-content: center;
+    gap: 26px;
+    flex-wrap: wrap;
+    padding: 20px 10px 60px;
+}
+
+.product-card {
+    display: block;
+    width: 250px;
+    padding: 16px;
+    background: var(--blanco);
+    text-decoration: none;
+    border-radius: 14px;
+    color: var(--gris-oscuro);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    transition: 0.25s ease;
+}
+
+.product-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+}
+
+.product-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px;
+    background: var(--gris-claro);
+}
+
+.product-card h3 {
+    margin-top: 14px;
+    margin-bottom: 6px;
+    font-size: 18px;
+    font-weight: 700;
+    color: var(--gris-oscuro);
+}
+
+.product-card p {
+    font-size: 17px;
+    font-weight: 700;
+    color: var(--verde);
+}
