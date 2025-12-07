@@ -1,0 +1,102 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Óptica Matizvision – Inicio</title>
+    <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+</head>
+
+<body>
+
+    <!-- NAVBAR PUBLICO -->
+    <nav class="navbar">
+        <div class="nav-left">
+            <a href="/" class="logo">ÓPTICA <span>MATIZVISION</span></a>
+        </div>
+
+        <div class="nav-right">
+            {% if user.is_authenticated %}
+                <span class="user-name">Hola, {{ user.full_name }}</span>
+                <a href="{% url 'logout' %}" class="btn-logout">Cerrar sesión</a>
+            {% else %}
+                <a href="{% url 'login' %}" class="btn-login">Iniciar sesión</a>
+                <a href="{% url 'register' %}" class="btn-register">Crear cuenta</a>
+            {% endif %}
+        </div>
+    </nav>
+
+
+    <!-- HERO PRINCIPAL -->
+    <section class="hero">
+        <div class="hero-text">
+            <h1>Bienvenido a Óptica Matizvision</h1>
+            <p>Tu visión es nuestra prioridad. Compra lentes, agenda tu examen visual y descubre una experiencia óptica moderna.</p>
+
+            <div class="hero-buttons">
+                <a href="{% url 'shop_home' %}" class="btn-primary">Ver Tienda</a>
+                <a href="{% url 'appointments_home' %}" class="btn-outline">Reservar Cita Médica</a>
+            </div>
+        </div>
+
+        <div class="hero-image">
+            <img src="{% static 'core/img/logomatiz.png' %}" alt="Óptica Matizvision">
+        </div>
+    </section>
+
+
+    <!-- SECCIÓN DESTACADOS -->
+    <section class="featured">
+        <h2>Servicios Destacados</h2>
+
+        <div class="featured-grid">
+
+            <div class="feature-box">
+                <img src="{% static 'core/img/icon-lentes.png' %}" alt="">
+                <h3>Lentes Ópticos</h3>
+                <p>Encuentra armazones y cristales de la mejor calidad.</p>
+                <a href="{% url 'shop_home' %}" class="feature-btn">Comprar</a>
+            </div>
+
+            <div class="feature-box">
+                <img src="{% static 'core/img/icon-vision.png' %}" alt="">
+                <h3>Examen Visual</h3>
+                <p>Agenda tu hora con nuestros especialistas certificados.</p>
+                <a href="{% url 'appointments_home' %}" class="feature-btn">Agendar</a>
+            </div>
+
+            <div class="feature-box">
+                <img src="{% static 'core/img/icon-sol.png' %}" alt="">
+                <h3>Lentes de Sol</h3>
+                <p>Protección UV y estilo para todas las ocasiones.</p>
+                <a href="{% url 'shop_home' %}" class="feature-btn">Ver Más</a>
+            </div>
+
+        </div>
+    </section>
+
+
+    <!-- SECCIÓN LOGIN CONDICIONAL -->
+    <section class="cta-login">
+        {% if user.is_authenticated %}
+            <h2>¿Qué deseas hacer hoy, {{ user.full_name }}?</h2>
+
+            <div class="cta-buttons">
+                <a href="{% url 'appointments_home' %}" class="btn-primary">Reservar cita</a>
+                <a href="#" class="btn-outline">Mi Perfil</a>
+            </div>
+
+        {% else %}
+            <h2>¿Tienes cuenta?</h2>
+            <p>Inicia sesión para comprar o agendar una hora médica.</p>
+
+            <div class="cta-buttons">
+                <a href="{% url 'login' %}" class="btn-primary">Iniciar sesión</a>
+                <a href="{% url 'register' %}" class="btn-outline">Crear cuenta</a>
+            </div>
+        {% endif %}
+    </section>
+
+</body>
+</html>

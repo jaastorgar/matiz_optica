@@ -60,6 +60,7 @@ class RegisterForm(forms.ModelForm):
         return user
 
 class LoginForm(forms.Form):
+
     email = forms.EmailField(
         label="Correo electrónico",
         widget=forms.EmailInput(attrs={
@@ -72,3 +73,6 @@ class LoginForm(forms.Form):
             "placeholder": "Ingresa tu contraseña"
         })
     )
+
+    def __init__(self, *args, **kwargs):
+        super().__init__(*args, **kwargs)
