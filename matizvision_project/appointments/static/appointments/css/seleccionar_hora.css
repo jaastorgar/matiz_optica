@@ -1,0 +1,73 @@
+:root {
+    --verde: #19A860;
+    --verde-oscuro: #158E52;
+    --fondo: #F1FAF6;
+    --gris: #5A5A5A;
+    --gris-claro: #CFCFCF;
+    --blanco: #FFFFFF;
+}
+
+/* GENERAL */
+body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--fondo);
+    padding: 40px;
+    margin: 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--verde);
+    margin-bottom: 10px;
+}
+
+h3 {
+    font-size: 20px;
+    font-weight: 600;
+    color: var(--gris);
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    margin-bottom: 20px;
+    color: var(--gris);
+}
+
+/* LISTA DE HORAS */
+ul {
+    list-style: none;
+    padding: 0;
+    max-width: 420px;
+    margin: 0 auto;
+}
+
+li {
+    background: var(--blanco);
+    padding: 16px;
+    border-radius: 12px;
+    margin-bottom: 12px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 3px 10px rgba(0,0,0,0.08);
+    font-size: 18px;
+    color: var(--gris);
+}
+
+/* BOTÓN RESERVAR */
+a {
+    padding: 8px 14px;
+    background: var(--verde);
+    color: white;
+    border-radius: 8px;
+    text-decoration: none;
+    font-weight: 600;
+    transition: 0.2s ease-in-out;
+}
+
+a:hover {
+    background: var(--verde-oscuro);
+}

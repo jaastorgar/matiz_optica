@@ -1,0 +1,48 @@
+:root {
+    --verde: #19A860;
+    --verde-oscuro: #158E52;
+    --fondo: #F1FAF6;
+    --gris: #5A5A5A;
+    --gris-claro: #CFCFCF;
+    --blanco: #FFFFFF;
+}
+
+body {
+    font-family: "Montserrat", sans-serif;
+    margin: 0;
+    padding: 40px;
+    background: var(--fondo);
+    text-align: center;
+}
+
+h1 {
+    font-size: 30px;
+    font-weight: 800;
+    color: var(--verde);
+    margin-bottom: 20px;
+}
+
+p {
+    font-size: 16px;
+    color: var(--gris);
+    margin-bottom: 10px;
+}
+
+form {
+    margin-top: 20px;
+}
+
+button {
+    padding: 12px 20px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-weight: 700;
+    cursor: pointer;
+    font-size: 16px;
+}
+
+button:hover {
+    background: var(--verde-oscuro);
+}

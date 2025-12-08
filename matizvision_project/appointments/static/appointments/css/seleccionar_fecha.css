@@ -1,0 +1,53 @@
+:root {
+    --verde: #19A860;
+    --verde-oscuro: #158E52;
+    --fondo: #F1FAF6;
+    --gris: #5A5A5A;
+    --gris-claro: #CFCFCF;
+}
+
+/* GENERAL */
+body {
+    font-family: "Montserrat", sans-serif;
+    background: var(--fondo);
+    padding: 40px;
+    margin: 0;
+    text-align: center;
+}
+
+h1 {
+    font-size: 28px;
+    font-weight: 800;
+    color: var(--verde);
+    margin-bottom: 20px;
+}
+
+label {
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--gris);
+}
+
+input[type="date"] {
+    padding: 10px;
+    font-size: 15px;
+    margin-top: 10px;
+    margin-bottom: 22px;
+    border-radius: 8px;
+    border: 1px solid var(--gris-claro);
+}
+
+button {
+    padding: 12px 20px;
+    background: var(--verde);
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 15px;
+    font-weight: 700;
+    cursor: pointer;
+}
+
+button:hover {
+    background: var(--verde-oscuro);
+}

@@ -1,0 +1,28 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <title>Agenda Médica – Servicios</title>
+    <link rel="stylesheet" href="{% static 'appointments/css/agenda_publica.css' %}">
+</head>
+
+<body>
+
+    <h1>Agenda Médica</h1>
+    <p>Selecciona un servicio para continuar con tu reserva.</p>
+
+    <ul>
+        {% for s in servicios %}
+        <li>
+            <strong>{{ s.nombre }}</strong><br>
+            <small>{{ s.descripcion }}</small><br>
+            <a href="{% url 'seleccionar_fecha' s.id %}">Seleccionar fecha</a>
+        </li>
+        <br>
+        {% endfor %}
+    </ul>
+
+</body>
+</html>

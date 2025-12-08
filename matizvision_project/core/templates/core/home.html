@@ -36,7 +36,7 @@
 
             <div class="hero-buttons">
                 <a href="{% url 'shop_home' %}" class="btn-primary">Ver Tienda</a>
-                <a href="{% url 'appointments_home' %}" class="btn-outline">Reservar Cita Médica</a>
+                <a href="{% url 'agenda_publica' %}" class="btn-outline">Reservar Cita Médica</a>
             </div>
         </div>
 
@@ -63,7 +63,7 @@
                 <img src="{% static 'core/img/icon-vision.png' %}" alt="">
                 <h3>Examen Visual</h3>
                 <p>Agenda tu hora con nuestros especialistas certificados.</p>
-                <a href="{% url 'appointments_home' %}" class="feature-btn">Agendar</a>
+                <a href="{% url 'agenda_publica' %}" class="feature-btn">Agendar</a>
             </div>
 
             <div class="feature-box">
@@ -83,7 +83,7 @@
             <h2>¿Qué deseas hacer hoy, {{ user.full_name }}?</h2>
 
             <div class="cta-buttons">
-                <a href="{% url 'appointments_home' %}" class="btn-primary">Reservar cita</a>
+                <a href="{% url 'agenda_publica' %}" class="btn-primary">Reservar cita</a>
                 <a href="#" class="btn-outline">Mi Perfil</a>
             </div>
 
