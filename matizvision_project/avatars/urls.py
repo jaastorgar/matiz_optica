@@ -1,6 +1,6 @@
 from django.urls import path
-from .views import avatar_home
+from .views import obtener_avatar
 
 urlpatterns = [
-    path('', avatar_home, name='avatar_home'),
+    path("get/<str:seccion>/", obtener_avatar, name="obtener_avatar"),
 ]
