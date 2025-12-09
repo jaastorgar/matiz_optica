@@ -4,10 +4,12 @@
     --plomo-claro: #ccc;
     --rojo: #D64541;
     --blanco: #FFFFFF;
+    --fondo: #F8FDFB;
 }
 
-
-/* NAVBAR */
+/* ================================
+   NAVBAR
+================================ */
 .navbar {
     display: flex;
     justify-content: space-between;
@@ -51,23 +53,27 @@
     color: white;
 }
 
-
-/* HERO */
+/* ================================
+   HERO
+================================ */
 .hero {
     display: flex;
     justify-content: space-between;
+    align-items: center;
     padding: 60px 10%;
-    background: #F8FDFB;
+    background: var(--fondo);
+    gap: 40px;
 }
 
 .hero-text {
-    max-width: 50%;
+    max-width: 45%;
 }
 
 .hero-text h1 {
     font-size: 42px;
     font-weight: 800;
     color: var(--verde);
+    line-height: 1.2;
 }
 
 .hero-text p {
@@ -82,6 +88,7 @@
     gap: 12px;
 }
 
+/* BOTONES */
 .btn-primary {
     background: var(--verde);
     padding: 12px 20px;
@@ -97,10 +104,32 @@
     border-radius: 8px;
     color: var(--verde);
     text-decoration: none;
+    font-weight: 600;
 }
 
+/* ================================
+   HERO IMAGE
+================================ */
+.hero-image {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 240px;          /* ANTES 380px */
+    height: 240px;         /* ANTES 380px */
+    border-radius: 50%;
+    background: white;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+}
 
-/* SECCIÓN DESTACADOS */
+.hero-image img {
+    width: 55%;            /* ANTES 65% */
+    height: auto;
+    object-fit: contain;
+}
+
+/* ================================
+  SECCIÓN DESTACADOS
+================================ */
 .featured {
     padding: 60px 10%;
     text-align: center;
@@ -108,25 +137,26 @@
 
 .featured h2 {
     font-size: 28px;
-    margin-bottom: 20px;
+    margin-bottom: 10px;
+    font-weight: 800;
+    color: var(--plomo-oscuro);
 }
 
 .featured-grid {
     display: flex;
     justify-content: center;
     gap: 30px;
+    flex-wrap: wrap;
 }
 
+/* CUADROS DE SERVICIOS */
 .feature-box {
     width: 260px;
     background: white;
     padding: 24px;
     border-radius: 14px;
     box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-}
-
-.feature-box img {
-    width: 70px;
+    text-align: center;
 }
 
 .feature-btn {
@@ -137,10 +167,12 @@
     padding: 8px 14px;
     border-radius: 6px;
     text-decoration: none;
+    font-weight: 600;
 }
 
-
-/* CTA LOGIN */
+/* ================================
+   CTA LOGIN (PARTE FINAL)
+================================ */
 .cta-login {
     padding: 60px 10%;
     text-align: center;

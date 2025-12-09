@@ -5,7 +5,23 @@
 <head>
     <meta charset="UTF-8">
     <title>Óptica Matizvision – Inicio</title>
+
+    <!-- CSS principal -->
     <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+
+    <!-- Librería de iconos profesionales -->
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+    <style>
+        .icon {
+            font-family: 'Material Symbols Rounded';
+            font-weight: 400;
+            font-size: 64px;
+            color: var(--verde);
+            display: inline-flex;
+            margin-bottom: 10px;
+        }
+    </style>
 </head>
 
 <body>
@@ -41,6 +57,7 @@
         </div>
 
         <div class="hero-image">
+            <!-- Logo reducido para evitar que se vea gigante -->
             <img src="{% static 'core/img/logomatiz.png' %}" alt="Óptica Matizvision">
         </div>
     </section>
@@ -53,21 +70,21 @@
         <div class="featured-grid">
 
             <div class="feature-box">
-                <img src="{% static 'core/img/icon-lentes.png' %}" alt="">
+                <span class="icon">eyeglasses</span>
                 <h3>Lentes Ópticos</h3>
                 <p>Encuentra armazones y cristales de la mejor calidad.</p>
                 <a href="{% url 'shop_home' %}" class="feature-btn">Comprar</a>
             </div>
 
             <div class="feature-box">
-                <img src="{% static 'core/img/icon-vision.png' %}" alt="">
+                <span class="icon">visibility</span>
                 <h3>Examen Visual</h3>
                 <p>Agenda tu hora con nuestros especialistas certificados.</p>
                 <a href="{% url 'agenda_publica' %}" class="feature-btn">Agendar</a>
             </div>
 
             <div class="feature-box">
-                <img src="{% static 'core/img/icon-sol.png' %}" alt="">
+                <span class="icon">sunny</span>
                 <h3>Lentes de Sol</h3>
                 <p>Protección UV y estilo para todas las ocasiones.</p>
                 <a href="{% url 'shop_home' %}" class="feature-btn">Ver Más</a>
@@ -79,6 +96,7 @@
 
     <!-- SECCIÓN LOGIN CONDICIONAL -->
     <section class="cta-login">
+
         {% if user.is_authenticated %}
             <h2>¿Qué deseas hacer hoy, {{ user.full_name }}?</h2>
 
