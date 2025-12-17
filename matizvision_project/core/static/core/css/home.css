@@ -47,17 +47,13 @@ body{
 }
 
 .brand-logo{
-  width:44px;
-  height:44px;
+  width:100px;
+  height:100px;
   object-fit:contain;
 }
 
 .brand-text{
-  font-size:16px;
-  font-weight:900;
-  letter-spacing:.3px;
-  color:var(--verde);
-  white-space:nowrap;
+  display:none;
 }
 
 .brand-text strong{ color:#111; }
@@ -316,14 +312,7 @@ body{
 }
 
 .hero-image{
-  display:flex;
-  justify-content:center;
-  align-items:center;
-  width:240px;
-  height:240px;
-  border-radius:50%;
-  background:var(--blanco);
-  box-shadow:var(--shadow);
+  display:none;
 }
 
 .hero-icon{
@@ -394,6 +383,47 @@ body{
   border-radius:10px;
   text-decoration:none;
   font-weight:900;
+}
+
+/* ======================
+   MISIÓN & QUIÉNES SOMOS
+====================== */
+.about-section{
+  padding:64px 10%;
+  background:var(--blanco);
+  display:grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap:34px;
+}
+
+.about-box{
+  background:var(--fondo);
+  border-radius:22px;
+  padding:36px 32px;
+  box-shadow:var(--shadow);
+  text-align:left;
+}
+
+.about-icon{
+  font-family:'Material Symbols Rounded';
+  font-size:48px;
+  color:var(--verde);
+  display:inline-block;
+  margin-bottom:10px;
+}
+
+.about-box h2{
+  margin:0 0 12px;
+  font-size:26px;
+  font-weight:900;
+  color:#222;
+}
+
+.about-box p{
+  margin:0;
+  font-size:16px;
+  line-height:1.6;
+  color:var(--plomo-oscuro);
 }
 
 /* ======================
@@ -485,4 +515,25 @@ body{
   .featured{ padding:44px 6%; }
   .footer-inner{ grid-template-columns:1fr; padding:28px 6%; }
   .footer-bottom{ padding:12px 6%; text-align:center; }
+}
+
+@media (max-width: 900px){
+  .about-section{
+    grid-template-columns:1fr;
+    padding:54px 7%;
+  }
+}
+
+@media (max-width: 720px){
+  .about-section{
+    padding:44px 6%;
+  }
+
+  .about-box{
+    padding:28px 24px;
+  }
+
+  .about-box h2{
+    font-size:22px;
+  }
 }

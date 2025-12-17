@@ -1,0 +1,60 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <title>Mis Reservas</title>
+
+  <link rel="stylesheet" href="{% static 'appointments/css/mis_reservas.css' %}">
+</head>
+
+<body>
+
+<main class="reservas-container">
+
+  <h1>Mis Reservas</h1>
+
+  {% if reservas %}
+    <ul class="reservas-list">
+      {% for r in reservas %}
+        <li class="reserva-card">
+
+          <div class="reserva-header">
+            <h3>{{ r.servicio.nombre }}</h3>
+            <span class="estado {{ r.estado }}">
+              {{ r.get_estado_display }}
+            </span>
+          </div>
+
+          <div class="reserva-info">
+            <p><strong>Fecha:</strong> {{ r.fecha }}</p>
+            <p><strong>Hora:</strong> {{ r.hora }}</p>
+          </div>
+
+          <div class="reserva-actions">
+
+            {% if r.estado == "pendiente" %}
+              <a href="#" class="btn confirmar">Confirmar</a>
+              <a href="{% url 'seleccionar_fecha' r.servicio.id %}" class="btn outline">Reagendar</a>
+            {% elif r.estado == "confirmada" %}
+              <span class="confirmada-text">Hora confirmada</span>
+              <a href="{% url 'seleccionar_fecha' r.servicio.id %}" class="btn outline">Reagendar</a>
+            {% elif r.estado == "atendida" %}
+              <span class="finalizada">Atendida</span>
+            {% endif %}
+
+          </div>
+
+        </li>
+      {% endfor %}
+    </ul>
+  {% else %}
+    <p class="empty">Aún no tienes reservas registradas.</p>
+  {% endif %}
+
+  <a href="{% url 'home' %}" class="btn-back">Volver al inicio</a>
+
+</main>
+
+</body>
+</html>

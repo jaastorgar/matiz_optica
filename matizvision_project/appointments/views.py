@@ -2,8 +2,6 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import AppointmentService, Appointment
 from django.contrib import messages
-from datetime import datetime, time
-
 
 # 1️⃣ Ver agenda pública (servicios)
 def agenda_publica(request):
@@ -63,3 +61,17 @@ def confirmar_reserva(request, servicio_id, fecha, hora):
 
     messages.success(request, "Reserva confirmada exitosamente.")
     return redirect("agenda_publica")
+
+
+@login_required
+def mis_reservas(request):
+    """
+    Muestra las reservas (appointments) del usuario autenticado
+    """
+    reservas = Appointment.objects.filter(
+        user=request.user
+    ).order_by("-fecha", "-hora")
+
+    return render(request, "appointments/mis_reservas.html", {
+        "reservas": reservas
+    })
