@@ -1,0 +1,63 @@
+<header class="navbar">
+  <a href="{% url 'home' %}" class="brand">
+    <img class="brand-logo" src="{% static 'core/img/logomatiz.png' %}" alt="Óptica Matizvision">
+    <span class="brand-text">ÓPTICA <strong>MATIZVISION</strong></span>
+  </a>
+
+  <!-- Links desktop -->
+  <nav class="nav-links">
+    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Inicio</a>
+    <a class="nav-link" href="{% url 'agenda_publica' %}">Reservar cita</a>
+    <a class="nav-link" href="{% url 'shop_home' %}">Tienda</a>
+  </nav>
+
+  <!-- Acciones -->
+  <div class="nav-actions">
+    {% if user.is_authenticated %}
+      <div class="profile-menu">
+        <button class="profile-btn" id="profileBtn">
+          <span class="material-symbols-rounded">person</span>
+          <span class="profile-name">{{ user.full_name|default:user.email }}</span>
+          <span class="material-symbols-rounded chevron">expand_more</span>
+        </button>
+
+        <div class="profile-dropdown" id="profileDropdown">
+          <a href="#">
+            <span class="material-symbols-rounded">account_circle</span> Mi perfil
+          </a>
+          <a href="{% url 'mis_reservas' %}">
+            <span class="material-symbols-rounded">calendar_month</span> Mis reservas
+          </a>
+          <div class="dropdown-sep"></div>
+          <a href="{% url 'logout' %}" class="danger">
+            <span class="material-symbols-rounded">logout</span> Cerrar sesión
+          </a>
+        </div>
+      </div>
+    {% else %}
+      <a href="{% url 'login' %}" class="btn-login">Iniciar sesión</a>
+      <a href="{% url 'register' %}" class="btn-register">Crear cuenta</a>
+    {% endif %}
+
+    <button class="burger" id="burgerBtn">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+</header>
+
+<!-- MOBILE MENU -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="{% url 'home' %}">Inicio</a>
+  <a href="{% url 'agenda_publica' %}">Reservar cita</a>
+  <a href="{% url 'shop_home' %}">Tienda</a>
+
+  <div class="mobile-sep"></div>
+
+  {% if user.is_authenticated %}
+    <a href="{% url 'mis_reservas' %}">Mis reservas</a>
+    <a class="danger" href="{% url 'logout' %}">Cerrar sesión</a>
+  {% else %}
+    <a href="{% url 'login' %}">Iniciar sesión</a>
+    <a href="{% url 'register' %}">Crear cuenta</a>
+  {% endif %}
+</div>

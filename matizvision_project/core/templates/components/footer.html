@@ -1,0 +1,35 @@
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Óptica Matizvision</h4>
+      <p>Tu visión, nuestra prioridad.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Accesos</h4>
+      <a href="{% url 'home' %}">Inicio</a>
+      <a href="{% url 'agenda_publica' %}">Reservar cita</a>
+      <a href="{% url 'shop_home' %}">Tienda</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p class="footer-line">
+        <span class="material-symbols-rounded footer-ico">call</span>
+        +56 9 0000 0000
+      </p>
+      <p class="footer-line">
+        <span class="material-symbols-rounded footer-ico">mail</span>
+        contacto@matizvision.cl
+      </p>
+      <p class="footer-line">
+        <span class="material-symbols-rounded footer-ico">location_on</span>
+        Chile
+      </p>
+    </div>
+  </div>
+
+  <div class="footer-bottom">
+    © {% now "Y" %} Óptica Matizvision. Todos los derechos reservados.
+  </div>
+</footer>
