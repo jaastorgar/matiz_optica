@@ -60,7 +60,7 @@ def confirmar_reserva(request, servicio_id, fecha, hora):
     )
 
     messages.success(request, "Reserva confirmada exitosamente.")
-    return redirect("agenda_publica")
+    return redirect("home")
 
 
 @login_required

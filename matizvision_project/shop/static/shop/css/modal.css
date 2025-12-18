@@ -1,0 +1,207 @@
+/* =====================================
+   MODAL PRODUCTO – MATIZVISION
+===================================== */
+
+:root{
+  --verde:#19A860;
+  --verde-oscuro:#158E52;
+  --plomo-oscuro:#555;
+  --plomo-claro:#d9d9d9;
+  --rojo:#D64541;
+  --blanco:#ffffff;
+  --fondo:#F8FDFB;
+  --shadow:0 20px 50px rgba(0,0,0,.18);
+}
+
+/* =====================================
+   OVERLAY
+===================================== */
+.modal-overlay{
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,.45);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  z-index:999;
+  padding:20px;
+}
+
+/* =====================================
+   CONTENEDOR MODAL
+===================================== */
+.modal-product{
+  background:var(--blanco);
+  width:100%;
+  max-width:820px;
+  border-radius:20px;
+  box-shadow:var(--shadow);
+  display:grid;
+  grid-template-columns: 1fr 1fr;
+  overflow:hidden;
+  animation: modalIn .25s ease;
+}
+
+/* =====================================
+   ANIMACIÓN
+===================================== */
+@keyframes modalIn{
+  from{
+    transform:translateY(20px) scale(.98);
+    opacity:0;
+  }
+  to{
+    transform:none;
+    opacity:1;
+  }
+}
+
+/* =====================================
+   MEDIA (IMAGEN)
+===================================== */
+.modal-product__media{
+  background:var(--fondo);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding:30px;
+}
+
+.modal-product__media img{
+  width:100%;
+  max-width:320px;
+  height:auto;
+  object-fit:contain;
+  border-radius:14px;
+  background:#f2f2f2;
+}
+
+.img-placeholder{
+  width:280px;
+  height:280px;
+  border-radius:14px;
+  background:#eee;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  color:#999;
+  font-weight:600;
+}
+
+/* =====================================
+   INFO
+===================================== */
+.modal-product__info{
+  padding:36px 34px;
+  display:flex;
+  flex-direction:column;
+  justify-content:center;
+}
+
+.modal-title{
+  margin:0;
+  font-size:26px;
+  font-weight:900;
+  color:#222;
+}
+
+.modal-price{
+  margin:10px 0 14px;
+  font-size:22px;
+  font-weight:800;
+  color:var(--verde);
+}
+
+.modal-desc{
+  font-size:15px;
+  line-height:1.6;
+  color:var(--plomo-oscuro);
+  margin-bottom:26px;
+}
+
+/* =====================================
+   ACCIONES
+===================================== */
+.modal-actions{
+  display:flex;
+  gap:14px;
+  flex-wrap:wrap;
+}
+
+.modal-actions a,
+.modal-actions button{
+  flex:1;
+  text-align:center;
+  padding:14px 18px;
+  border-radius:14px;
+  font-weight:800;
+  font-size:15px;
+  cursor:pointer;
+  text-decoration:none;
+}
+
+/* BOTÓN VER */
+.modal-actions .btn-outline{
+  border:2px solid var(--verde);
+  color:var(--verde);
+  background:transparent;
+}
+
+.modal-actions .btn-outline:hover{
+  background:var(--verde);
+  color:white;
+}
+
+/* BOTÓN COMPRAR / LOGIN */
+.modal-actions .btn-primary{
+  background:var(--verde);
+  border:none;
+  color:white;
+}
+
+.modal-actions .btn-primary:hover{
+  background:var(--verde-oscuro);
+}
+
+/* =====================================
+   BOTÓN CERRAR
+===================================== */
+.modal-close{
+  position:absolute;
+  top:16px;
+  right:18px;
+  font-size:22px;
+  cursor:pointer;
+  color:#666;
+}
+
+.modal-close:hover{
+  color:#000;
+}
+
+/* =====================================
+   RESPONSIVE
+===================================== */
+@media(max-width:820px){
+  .modal-product{
+    grid-template-columns:1fr;
+  }
+
+  .modal-product__media{
+    padding:24px;
+  }
+
+  .modal-product__info{
+    padding:28px 24px;
+  }
+
+  .modal-title{
+    font-size:22px;
+  }
+}
+
+@media(max-width:480px){
+  .modal-actions{
+    flex-direction:column;
+  }
+}

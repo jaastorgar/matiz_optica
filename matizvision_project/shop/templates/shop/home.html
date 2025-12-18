@@ -1,34 +1,64 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Tienda – Óptica Matizvision</title>
+
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'shop/css/shop.css' %}">
+    <link rel="stylesheet" href="{% static 'shop/css/modal.css' %}">
 </head>
 
 <body>
+
+{% include "components/navbar.html" %}
+
+<main class="shop-container">
 
     <h1 class="title">Tienda Matizvision</h1>
 
     <!-- Categorías -->
     <div class="categories">
         {% for c in categorias %}
-            <a href="?categoria={{ c.slug }}" class="category">{{ c.nombre }}</a>
+            <a href="?categoria={{ c.slug }}" class="category">
+                {{ c.nombre }}
+            </a>
         {% endfor %}
     </div>
 
     <!-- Productos -->
     <div class="product-grid">
         {% for p in productos %}
-        <a href="{% url 'product_detail' p.slug %}" class="product-card">
+        <div 
+            class="product-card open-modal"
+            data-url="{% url 'product_detail' p.slug %}"
+        >
             <img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">
             <h3>{{ p.nombre }}</h3>
             <p>${{ p.precio }}</p>
-        </a>
+        </div>
+        {% empty %}
+            <p>No hay productos disponibles.</p>
         {% endfor %}
     </div>
+
+</main>
+
+<!-- MODAL -->
+<div id="product-modal" class="modal">
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-content">
+        <button class="modal-close">&times;</button>
+        <div id="modal-body"></div>
+    </div>
+</div>
+
+{% include "components/footer.html" %}
+
+<script src="{% static 'core/js/navbar.js' %}"></script>
+<script src="{% static 'shop/js/shop.js' %}"></script>
 
 </body>
 </html>

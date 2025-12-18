@@ -8,7 +8,23 @@
   --shadow:0 10px 30px rgba(0,0,0,.08);
 }
 
-/* NAVBAR */
+*{
+  box-sizing:border-box;
+}
+
+body{
+  margin:0;
+  font-family:"Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background:var(--fondo);
+  color:var(--plomo-oscuro);
+  min-height:100vh;
+  display:flex;
+  flex-direction:column;
+}
+
+/* =========================
+   NAVBAR
+========================= */
 .navbar{
   position:sticky;
   top:0;
@@ -16,11 +32,12 @@
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:12px 22px;
-  background:rgba(255,255,255,.92);
+  padding:14px 24px;
+  background:rgba(255,255,255,.95);
   border-bottom:1px solid var(--plomo-claro);
 }
 
+/* BRAND */
 .brand{
   display:flex;
   align-items:center;
@@ -33,9 +50,110 @@
   object-fit:contain;
 }
 
-.brand-text{ display:none; }
+.brand-text{
+  display:none;
+}
 
-/* FOOTER */
+/* LINKS */
+.nav-links{
+  display:flex;
+  gap:12px;
+}
+
+.nav-links a{
+  text-decoration:none;
+  font-weight:800;
+  color:#222;
+  padding:8px 14px;
+  border-radius:14px;
+  transition:.15s;
+}
+
+.nav-links a:hover{
+  background:rgba(25,168,96,.12);
+}
+
+.nav-links a.active{
+  background:rgba(25,168,96,.18);
+  color:var(--verde-oscuro);
+}
+
+/* ACTIONS */
+.nav-actions{
+  display:flex;
+  gap:10px;
+}
+
+.nav-actions a{
+  text-decoration:none;
+  font-weight:900;
+  padding:10px 16px;
+  border-radius:14px;
+}
+
+.btn-login{
+  background:var(--verde);
+  color:var(--blanco);
+}
+
+.btn-register{
+  border:2px solid var(--verde);
+  color:var(--verde);
+}
+
+/* =========================
+   BURGER BUTTON (NUEVO)
+========================= */
+.burger{
+  width:44px;
+  height:44px;
+  border-radius:14px;
+  border:1px solid rgba(0,0,0,.08);
+  background:#fff;
+  cursor:pointer;
+  display:none;
+  align-items:center;
+  justify-content:center;
+  gap:4px;
+  flex-direction:column;
+}
+
+.burger span{
+  width:18px;
+  height:2px;
+  background:#222;
+  border-radius:2px;
+}
+
+/* =========================
+   MOBILE MENU (NUEVO)
+========================= */
+.mobile-menu{
+  display:none;
+  flex-direction:column;
+  gap:12px;
+  padding:14px 18px;
+  border-bottom:1px solid var(--plomo-claro);
+  background:var(--blanco);
+}
+
+.mobile-menu a{
+  text-decoration:none;
+  font-weight:800;
+  color:#222;
+}
+
+.mobile-menu .danger{
+  color:var(--rojo);
+}
+
+.mobile-menu.show{
+  display:flex;
+}
+
+/* =========================
+   FOOTER
+========================= */
 .footer{
   margin-top:auto;
   background:#0f1a14;
@@ -43,26 +161,53 @@
 }
 
 .footer-inner{
-  padding:34px 10%;
+  padding:40px 10%;
   display:grid;
   grid-template-columns:repeat(3,1fr);
-  gap:22px;
+  gap:28px;
 }
 
 .footer-col h4{
+  margin:0 0 12px;
   font-weight:900;
 }
 
+.footer-col p,
 .footer-col a{
-  display:block;
   color:#cfe2d5;
   text-decoration:none;
-  margin:8px 0;
+  font-size:14px;
+  margin:6px 0;
 }
 
 .footer-bottom{
   border-top:1px solid rgba(255,255,255,.12);
   padding:14px 10%;
-  font-size:13px;
   text-align:center;
+  font-size:13px;
+  color:#bcd3c3;
+}
+
+/* =========================
+   RESPONSIVE
+========================= */
+@media (max-width: 900px){
+  .nav-links{
+    display:none;
+  }
+
+  .burger{
+    display:flex;
+  }
+
+  .footer-inner{
+    grid-template-columns:1fr;
+    text-align:center;
+  }
+}
+
+@media (min-width: 901px){
+  .mobile-menu{
+    display:none !important;
+  }
 }

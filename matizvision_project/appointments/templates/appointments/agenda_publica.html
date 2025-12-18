@@ -1,28 +1,36 @@
 {% load static %}
-
 <!DOCTYPE html>
 <html lang="es">
 <head>
     <meta charset="UTF-8">
     <title>Agenda Médica – Servicios</title>
+
+    <link rel="stylesheet" href="{% static 'core/css/base.css' %}">
     <link rel="stylesheet" href="{% static 'appointments/css/agenda_publica.css' %}">
 </head>
 
 <body>
 
-    <h1>Agenda Médica</h1>
-    <p>Selecciona un servicio para continuar con tu reserva.</p>
+    {% include "components/navbar.html" %}
 
-    <ul>
-        {% for s in servicios %}
-        <li>
-            <strong>{{ s.nombre }}</strong><br>
-            <small>{{ s.descripcion }}</small><br>
-            <a href="{% url 'seleccionar_fecha' s.id %}">Seleccionar fecha</a>
-        </li>
-        <br>
-        {% endfor %}
-    </ul>
+    <main class="agenda-container">
+        <h1>Agenda Médica</h1>
+        <p>Selecciona un servicio para continuar con tu reserva.</p>
+
+        <ul class="agenda-list">
+            {% for s in servicios %}
+            <li class="agenda-card">
+                <strong>{{ s.nombre }}</strong>
+                <small>{{ s.descripcion }}</small>
+                <a href="{% url 'seleccionar_fecha' s.id %}">Seleccionar fecha</a>
+            </li>
+            {% endfor %}
+        </ul>
+    </main>
+
+    {% include "components/footer.html" %}
+
+    <script src="{% static 'core/js/navbar.js' %}"></script>
 
 </body>
 </html>
