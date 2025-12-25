@@ -75,3 +75,17 @@ def mis_reservas(request):
     return render(request, "appointments/mis_reservas.html", {
         "reservas": reservas
     })
+
+
+@login_required
+def confirmar_cita_existente(request, appointment_id):
+    if request.method != "POST":
+        return redirect("mis_reservas")
+
+    cita = Appointment.objects.get(id=appointment_id, user=request.user)
+
+    cita.estado = "confirmada"
+    cita.save()
+
+    messages.success(request, "Cita confirmada correctamente.")
+    return redirect("mis_reservas")
