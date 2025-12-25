@@ -7,7 +7,7 @@
 
   <!-- Links desktop -->
   <nav class="nav-links">
-    <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="{% url 'home' %}">Inicio</a>
+    <a class="nav-link" href="{% url 'home' %}">Inicio</a>
     <a class="nav-link" href="{% url 'agenda_publica' %}">Reservar cita</a>
     <a class="nav-link" href="{% url 'shop_home' %}">Tienda</a>
   </nav>

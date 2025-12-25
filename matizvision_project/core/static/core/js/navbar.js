@@ -9,6 +9,37 @@ document.addEventListener("DOMContentLoaded", () => {
   const profileBtn = document.getElementById("profileBtn");
   const profileDropdown = document.getElementById("profileDropdown");
 
+  const navLinks = document.querySelectorAll(".nav-link");
+  const mobileLinks = document.querySelectorAll(".mobile-menu a");
+
+  /* ===============================
+     ACTIVE LINK (DESKTOP + MOBILE)
+     Detecta URL actual y marca active
+  =============================== */
+  const currentPath = window.location.pathname;
+
+  const setActiveLink = (links) => {
+    links.forEach(link => {
+      const href = link.getAttribute("href");
+
+      if (!href) return;
+
+      // Limpia active
+      link.classList.remove("active");
+
+      // Match exacto o por prefijo (ej: /appointments/)
+      if (
+        currentPath === href ||
+        (href !== "/" && currentPath.startsWith(href))
+      ) {
+        link.classList.add("active");
+      }
+    });
+  };
+
+  setActiveLink(navLinks);
+  setActiveLink(mobileLinks);
+
   /* ===============================
      BURGER MENU (MÓVIL)
   =============================== */
