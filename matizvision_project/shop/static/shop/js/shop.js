@@ -1,61 +1,49 @@
 document.addEventListener("DOMContentLoaded", () => {
+
   const modal = document.getElementById("product-modal");
   const modalBody = document.getElementById("modal-body");
-  const closeBtn = document.querySelector(".modal-close");
-  const backdrop = document.querySelector(".modal-backdrop");
 
-  function openModalWithHTML(html) {
+  function openModal(html) {
     modalBody.innerHTML = html;
-    modal.classList.add("show");
+    modal.style.display = "flex";
     document.body.style.overflow = "hidden";
   }
 
   function closeModal() {
-    modal.classList.remove("show");
+    modal.style.display = "none";
     modalBody.innerHTML = "";
     document.body.style.overflow = "";
   }
 
-  // Cerrar modal
-  if (closeBtn) closeBtn.addEventListener("click", closeModal);
-  if (backdrop) backdrop.addEventListener("click", closeModal);
-
-  document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape") closeModal();
-  });
-
-  // Delegación (mejor que forEach, y evita clicks raros)
+  // Click en productos
   document.addEventListener("click", (e) => {
     const card = e.target.closest(".open-modal");
     if (!card) return;
 
-    // Evita navegar si el user hace click en un link interno del card
-    const isLink = e.target.closest("a");
-    if (isLink) return;
-
     const url = card.dataset.url;
-
-    // ✅ Guardas anti /shop/null
-    if (!url || url === "null" || url === "undefined") {
-      console.warn("Tarjeta sin data-url válida:", card);
-      return;
-    }
+    if (!url) return;
 
     fetch(url, {
-      headers: { "X-Requested-With": "XMLHttpRequest" },
+      headers: { "X-Requested-With": "XMLHttpRequest" }
     })
-      .then((res) => {
-        if (!res.ok) throw new Error(`HTTP ${res.status}`);
-        return res.text();
-      })
-      .then((html) => openModalWithHTML(html))
-      .catch((err) => {
-        console.error("Error cargando modal:", err);
-      });
+      .then(res => res.text())
+      .then(html => openModal(html))
+      .catch(err => console.error("Modal error:", err));
   });
 
-  // Cerrar con click en cualquier elemento con data-modal-close dentro del modal
+  // Cerrar con X
   document.addEventListener("click", (e) => {
-    if (e.target.closest("[data-modal-close]")) closeModal();
+    if (e.target.closest(".modal-close")) closeModal();
   });
+
+  // Cerrar haciendo click fuera
+  modal.addEventListener("click", (e) => {
+    if (e.target === modal) closeModal();
+  });
+
+  // Escape
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape") closeModal();
+  });
+
 });
