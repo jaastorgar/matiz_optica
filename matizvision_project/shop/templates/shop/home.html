@@ -35,7 +35,11 @@
             class="product-card open-modal"
             data-url="{% url 'product_detail' p.slug %}"
         >
-            <img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">
+            {% if p.imagen %}
+              <img src="{{ p.imagen.url }}" alt="{{ p.nombre }}">
+            {% else %}
+              <div class="img-placeholder">Sin imagen</div>
+            {% endif %}
             <h3>{{ p.nombre }}</h3>
             <p>${{ p.precio }}</p>
         </div>
@@ -46,7 +50,7 @@
 
 </main>
 
-<!-- MODAL OVERLAY -->
+<!-- MODAL -->
 <div id="product-modal" class="modal-overlay">
     <button class="modal-close" aria-label="Cerrar">&times;</button>
     <div id="modal-body"></div>
