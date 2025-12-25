@@ -1,130 +1,125 @@
-/* =========================
-   VARIABLES
-========================= */
 :root{
   --verde:#19A860;
   --verde-oscuro:#158E52;
-  --plomo:#555;
-  --plomo-claro:#d9d9d9;
+  --verde-claro:rgba(25,168,96,.12);
+  --plomo:#444;
+  --borde:rgba(0,0,0,.08);
+  --rojo:#D64541;
   --blanco:#ffffff;
   --fondo:#F8FDFB;
-  --rojo:#d9534f;
-  --shadow:0 12px 30px rgba(0,0,0,.08);
+  --shadow:0 14px 34px rgba(0,0,0,.10);
 }
 
-/* =========================
-   RESET BÁSICO
-========================= */
+/* ======================
+   RESET
+====================== */
 *{
   box-sizing:border-box;
+  margin:0;
+  padding:0;
 }
 
 body{
-  margin:0;
   font-family:"Montserrat", system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
-  background:var(--fondo);
+  background:var(--blanco);
   color:var(--plomo);
-  min-height:100vh;
-  display:flex;
-  flex-direction:column;
 }
 
-a{
-  text-decoration:none;
-  color:inherit;
-}
-
-img{
-  max-width:100%;
-  display:block;
-}
-
-/* =========================
+/* ======================
    NAVBAR
-========================= */
+====================== */
 .navbar{
   position:sticky;
   top:0;
-  z-index:100;
+  z-index:1000;
   display:flex;
   align-items:center;
   justify-content:space-between;
-  padding:14px 28px;
-  background:rgba(255,255,255,.96);
-  border-bottom:1px solid var(--plomo-claro);
+  gap:18px;
+  padding:14px 24px;
+  background:rgba(255,255,255,.95);
+  backdrop-filter:blur(8px);
+  border-bottom:1px solid var(--borde);
 }
 
 /* BRAND */
 .brand{
   display:flex;
   align-items:center;
-  gap:12px;
+  gap:10px;
+  text-decoration:none;
+  color:#111;
 }
 
 .brand-logo{
-  width:58px;
-  height:58px;
+  width:100px;
+  height:100px;
   object-fit:contain;
 }
 
-.brand-text{
-  font-weight:900;
-  letter-spacing:.4px;
-  display:none;
-}
-
-/* LINKS DESKTOP */
+/* ======================
+   LINKS CENTRALES
+====================== */
 .nav-links{
   display:flex;
+  align-items:center;
   gap:10px;
+  flex:1;
+  justify-content:center;
 }
 
-.nav-links a{
+.nav-link{
+  text-decoration:none;
   font-weight:800;
-  padding:8px 16px;
-  border-radius:14px;
   color:#222;
-  transition:.15s;
+  padding:10px 12px;
+  border-radius:12px;
+  transition:.15s ease;
 }
 
-.nav-links a:hover{
-  background:rgba(25,168,96,.12);
+.nav-link:hover{
+  background:rgba(25,168,96,.10);
+  color:#111;
 }
 
-.nav-links a.active{
-  background:rgba(25,168,96,.18);
+.nav-link.active{
+  background:rgba(25,168,96,.14);
   color:var(--verde-oscuro);
 }
 
-/* =========================
-   ACTIONS
-========================= */
+/* ======================
+   ACCIONES DERECHA
+====================== */
 .nav-actions{
   display:flex;
   align-items:center;
   gap:10px;
 }
 
-/* BOTONES */
+/* ======================
+   BOTONES LOGIN
+====================== */
+.btn-login,
+.btn-register{
+  font-weight:900;
+  padding:10px 14px;
+  border-radius:14px;
+  text-decoration:none;
+}
+
 .btn-login{
   background:var(--verde);
   color:#fff;
-  padding:10px 18px;
-  font-weight:900;
-  border-radius:16px;
 }
 
 .btn-register{
   border:2px solid var(--verde);
   color:var(--verde);
-  padding:10px 18px;
-  font-weight:900;
-  border-radius:16px;
 }
 
-/* =========================
-   PROFILE MENU
-========================= */
+/* ======================
+   PERFIL
+====================== */
 .profile-menu{
   position:relative;
 }
@@ -133,68 +128,89 @@ img{
   display:flex;
   align-items:center;
   gap:8px;
-  background:#fff;
-  border:1px solid var(--plomo-claro);
   padding:8px 14px;
-  border-radius:14px;
+  border-radius:16px;
+  border:1px solid var(--borde);
+  background:#fff;
   cursor:pointer;
-  font-weight:800;
+  font-weight:900;
+  box-shadow:var(--shadow);
 }
 
-.profile-btn .chevron{
-  font-size:20px;
+.profile-btn .material-symbols-rounded{
+  color:var(--verde);
+  font-size:22px;
 }
 
+.profile-name{
+  max-width:180px;
+  white-space:nowrap;
+  overflow:hidden;
+  text-overflow:ellipsis;
+}
+
+/* ======================
+   DROPDOWN PERFIL
+====================== */
 .profile-dropdown{
   position:absolute;
+  top:56px;
   right:0;
-  top:120%;
+  width:240px;
   background:#fff;
-  border-radius:16px;
-  box-shadow:var(--shadow);
-  min-width:220px;
-  display:none;
-  flex-direction:column;
+  border-radius:18px;
+  border:1px solid var(--borde);
+  box-shadow:0 20px 40px rgba(0,0,0,.18);
   padding:10px;
-  z-index:200;
+  display:none;
 }
 
 .profile-dropdown.show{
-  display:flex;
+  display:block;
 }
 
 .profile-dropdown a{
   display:flex;
   align-items:center;
-  gap:10px;
-  padding:10px 12px;
-  font-weight:800;
-  border-radius:10px;
+  gap:12px;
+  padding:12px;
+  border-radius:14px;
+  text-decoration:none;
+  font-weight:900;
+  color:#111;
+}
+
+.profile-dropdown a .material-symbols-rounded{
+  color:var(--verde);
 }
 
 .profile-dropdown a:hover{
-  background:rgba(25,168,96,.12);
+  background:var(--verde-claro);
 }
 
 .profile-dropdown .danger{
   color:var(--rojo);
 }
 
+.profile-dropdown .danger .material-symbols-rounded{
+  color:var(--rojo);
+}
+
 .dropdown-sep{
   height:1px;
-  background:var(--plomo-claro);
+  background:rgba(0,0,0,.08);
   margin:8px 0;
 }
 
-/* =========================
+/* ======================
    BURGER
-========================= */
+====================== */
 .burger{
   display:none;
   width:44px;
   height:44px;
   border-radius:14px;
-  border:1px solid var(--plomo-claro);
+  border:1px solid var(--borde);
   background:#fff;
   cursor:pointer;
   flex-direction:column;
@@ -206,37 +222,50 @@ img{
 .burger span{
   width:18px;
   height:2px;
-  background:#222;
+  background:#111;
+  border-radius:2px;
 }
 
-/* =========================
+/* ======================
    MOBILE MENU
-========================= */
+====================== */
 .mobile-menu{
   display:none;
-  flex-direction:column;
-  gap:12px;
-  padding:16px 22px;
   background:#fff;
-  border-bottom:1px solid var(--plomo-claro);
+  border-bottom:1px solid var(--borde);
+  padding:14px 16px;
+}
+
+.mobile-menu.show{
+  display:block;
 }
 
 .mobile-menu a{
-  font-weight:800;
-  padding:6px 0;
+  display:block;
+  padding:12px;
+  border-radius:14px;
+  font-weight:900;
+  text-decoration:none;
+  color:#111;
+}
+
+.mobile-menu a:hover{
+  background:var(--verde-claro);
 }
 
 .mobile-menu .danger{
   color:var(--rojo);
 }
 
-.mobile-menu.show{
-  display:flex;
+.mobile-sep{
+  height:1px;
+  background:rgba(0,0,0,.08);
+  margin:10px 0;
 }
 
-/* =========================
+/* ======================
    FOOTER
-========================= */
+====================== */
 .footer{
   margin-top:auto;
   background:#0f1a14;
@@ -244,40 +273,41 @@ img{
 }
 
 .footer-inner{
-  padding:36px 10%;
+  padding:34px 10%;
   display:grid;
-  grid-template-columns:1.2fr 1fr 1.2fr;
-  gap:24px;
+  grid-template-columns: 1.2fr 1fr 1.2fr;
+  gap:22px;
 }
 
 .footer-col h4{
-  margin:0 0 12px;
+  margin:0 0 10px;
+  font-size:16px;
   font-weight:900;
-  color:#fff;
+  color:#ffffff;
 }
 
 .footer-col p{
   margin:0;
-  line-height:1.6;
   color:#cfe2d5;
+  line-height:1.5;
 }
 
 .footer-col a{
   display:block;
+  color:#cfe2d5;
+  text-decoration:none;
   margin:8px 0;
   font-weight:800;
-  color:#cfe2d5;
 }
 
-.footer-col a:hover{
-  color:#fff;
-}
+.footer-col a:hover{ color:#ffffff; }
 
 .footer-line{
   display:flex;
   align-items:center;
   gap:10px;
-  margin-top:10px;
+  margin:10px 0 0;
+  color:#cfe2d5;
 }
 
 .footer-ico{
@@ -287,32 +317,48 @@ img{
 }
 
 .footer-bottom{
-  border-top:1px solid rgba(255,255,255,.15);
+  border-top:1px solid rgba(255,255,255,.12);
   padding:14px 10%;
-  font-size:13px;
   color:#b9c9be;
+  font-size:13px;
 }
 
-/* =========================
+/* ======================
    RESPONSIVE
-========================= */
+====================== */
 @media (max-width: 900px){
   .nav-links{
     display:none;
   }
-
   .burger{
     display:flex;
   }
+}
 
-  .footer-inner{
-    grid-template-columns:1fr;
-    text-align:center;
+@media (max-width: 720px){
+  .navbar{
+    padding:12px 16px;
   }
 }
 
-@media (min-width: 901px){
-  .mobile-menu{
-    display:none !important;
+@media (max-width: 900px) {
+  .footer-inner {
+    grid-template-columns: 1fr 1fr;
+    gap: 32px;
+  }
+}
+
+@media (max-width: 600px) {
+  .footer {
+    padding: 48px 20px 20px;
+  }
+
+  .footer-inner {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .footer-line {
+    justify-content: center;
   }
 }

@@ -3,7 +3,6 @@
 <header class="navbar">
   <a href="{% url 'home' %}" class="brand">
     <img class="brand-logo" src="{% static 'core/img/logomatiz.png' %}" alt="Óptica Matizvision">
-    <span class="brand-text">ÓPTICA <strong>MATIZVISION</strong></span>
   </a>
 
   <!-- Links desktop -->
@@ -29,6 +28,9 @@
           </a>
           <a href="{% url 'mis_reservas' %}">
             <span class="material-symbols-rounded">calendar_month</span> Mis reservas
+          </a>
+          <a href="#" role="menuitem">
+            <span class="material-symbols-rounded">receipt_long</span> Mis compras
           </a>
           <div class="dropdown-sep"></div>
           <a href="{% url 'logout' %}" class="danger">
