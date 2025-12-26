@@ -15,35 +15,52 @@
   <!-- Acciones -->
   <div class="nav-actions">
     {% if user.is_authenticated %}
+
+      <!-- PERFIL CON AVATAR -->
       <div class="profile-menu">
-        <button class="profile-btn" id="profileBtn">
-          <span class="material-symbols-rounded">person</span>
-          <span class="profile-name">{{ user.full_name|default:user.email }}</span>
-          <span class="material-symbols-rounded chevron">expand_more</span>
+        <button class="profile-btn" id="profileBtn" type="button" aria-haspopup="true" aria-expanded="false">
+
+          <!-- AVATAR -->
+          {% include "avatars/avatar_menu.html" %}
+
+          <span class="profile-name">
+            {{ user.full_name|default:user.email }}
+          </span>
+
+          <span class="material-symbols-rounded chevron">
+            expand_more
+          </span>
         </button>
 
+        <!-- Dropdown -->
         <div class="profile-dropdown" id="profileDropdown">
           <a href="#">
-            <span class="material-symbols-rounded">account_circle</span> Mi perfil
+            <span class="material-symbols-rounded">account_circle</span>
+            Mi perfil
           </a>
           <a href="{% url 'mis_reservas' %}">
-            <span class="material-symbols-rounded">calendar_month</span> Mis reservas
+            <span class="material-symbols-rounded">calendar_month</span>
+            Mis reservas
           </a>
-          <a href="#" role="menuitem">
-            <span class="material-symbols-rounded">receipt_long</span> Mis compras
+          <a href="#">
+            <span class="material-symbols-rounded">receipt_long</span>
+            Mis compras
           </a>
           <div class="dropdown-sep"></div>
           <a href="{% url 'logout' %}" class="danger">
-            <span class="material-symbols-rounded">logout</span> Cerrar sesión
+            <span class="material-symbols-rounded">logout</span>
+            Cerrar sesión
           </a>
         </div>
       </div>
+
     {% else %}
       <a href="{% url 'login' %}" class="btn-login">Iniciar sesión</a>
       <a href="{% url 'register' %}" class="btn-register">Crear cuenta</a>
     {% endif %}
 
-    <button class="burger" id="burgerBtn">
+    <!-- Burger -->
+    <button class="burger" id="burgerBtn" aria-label="Abrir menú">
       <span></span><span></span><span></span>
     </button>
   </div>

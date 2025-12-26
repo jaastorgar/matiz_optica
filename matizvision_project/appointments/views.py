@@ -2,11 +2,26 @@ from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .models import AppointmentService, Appointment
 from django.contrib import messages
+from avatars.models import Avatar
+from .models import AppointmentService
 
 # 1️⃣ Ver agenda pública (servicios)
 def agenda_publica(request):
     servicios = AppointmentService.objects.all()
-    return render(request, "appointments/agenda_publica.html", {"servicios": servicios})
+
+    avatar = Avatar.objects.filter(
+        activo=True,
+        seccion="agenda"
+    ).first()
+
+    return render(
+        request,
+        "appointments/agenda_publica.html",
+        {
+            "servicios": servicios,
+            "avatar": avatar,
+        }
+    )
 
 
 # 2️⃣ Seleccionar fecha

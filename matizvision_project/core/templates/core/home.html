@@ -6,202 +6,255 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Óptica Matizvision – Inicio</title>
 
+  <!-- CSS principal -->
   <link rel="stylesheet" href="{% static 'core/css/home.css' %}">
+  <!-- CSS avatar -->
+  <link rel="stylesheet" href="{% static 'avatars/css/avatar_menu.css' %}">
 
-  <!-- Iconos profesionales -->
+  <!-- Tipografía + Iconos -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;800;900&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:wght@300;400;500;600&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-  <!-- NAVBAR -->
-  <header class="navbar">
-    <a href="{% url 'home' %}" class="brand">
-      <img class="brand-logo" src="{% static 'core/img/logomatiz.png' %}" alt="Óptica Matizvision">
-      <span class="brand-text">ÓPTICA <strong>MATIZVISION</strong></span>
-    </a>
+<!-- ====================== NAVBAR ====================== -->
+<header class="navbar">
+  <a href="{% url 'home' %}" class="brand">
+    <img
+      class="brand-logo"
+      src="{% static 'core/img/logomatiz.png' %}"
+      alt="Óptica Matizvision"
+    >
+    <span class="brand-text">
+      ÓPTICA <strong>MATIZVISION</strong>
+    </span>
+  </a>
 
-    <!-- Links desktop -->
-    <nav class="nav-links" aria-label="Navegación principal">
-      <a class="nav-link" href="{% url 'home' %}">Inicio</a>
-      <a class="nav-link" href="{% url 'agenda_publica' %}">Reservar cita</a>
-      <a class="nav-link" href="{% url 'shop_home' %}">Tienda</a>
-    </nav>
+  <!-- Links desktop -->
+  <nav class="nav-links" aria-label="Navegación principal">
+    <a class="nav-link active" href="{% url 'home' %}">Inicio</a>
+    <a class="nav-link" href="{% url 'agenda_publica' %}">Reservar cita</a>
+    <a class="nav-link" href="{% url 'shop_home' %}">Tienda</a>
+  </nav>
 
-    <!-- Acciones derecha -->
-    <div class="nav-actions">
-      {% if user.is_authenticated %}
-
-        <!-- Perfil dropdown -->
-        <div class="profile-menu" id="profileMenu">
-          <button class="profile-btn" id="profileBtn" type="button" aria-haspopup="true" aria-expanded="false">
-            <span class="material-symbols-rounded">person</span>
-            <span class="profile-name">{{ user.full_name|default:user.email }}</span>
-            <span class="material-symbols-rounded chevron">expand_more</span>
-          </button>
-
-          <div class="profile-dropdown" id="profileDropdown" role="menu" aria-label="Menú de perfil">
-            <a href="#" role="menuitem">
-              <span class="material-symbols-rounded">account_circle</span>
-              Mi perfil
-            </a>
-            <a href="{% url 'mis_reservas' %}" role="menuitem">
-              <span class="material-symbols-rounded">calendar_month</span>
-              Mis reservas
-            </a>
-            <a href="#" role="menuitem">
-              <span class="material-symbols-rounded">receipt_long</span>
-              Mis compras
-            </a>
-            <div class="dropdown-sep"></div>
-            <a href="{% url 'logout' %}" class="danger" role="menuitem">
-              <span class="material-symbols-rounded">logout</span>
-              Cerrar sesión
-            </a>
-          </div>
-        </div>
-
-      {% else %}
-        <a href="{% url 'login' %}" class="btn-login">Iniciar sesión</a>
-        <a href="{% url 'register' %}" class="btn-register">Crear cuenta</a>
-      {% endif %}
-
-      <!-- Botón hamburguesa (móvil) -->
-      <button class="burger" id="burgerBtn" type="button" aria-label="Abrir menú">
-        <span></span><span></span><span></span>
-      </button>
-    </div>
-  </header>
-
-  <!-- MENÚ MÓVIL -->
-  <div class="mobile-menu" id="mobileMenu">
-    <a href="{% url 'home' %}">Inicio</a>
-    <a href="{% url 'agenda_publica' %}">Reservar cita</a>
-    <a href="{% url 'shop_home' %}">Tienda</a>
-
-    <div class="mobile-sep"></div>
+  <!-- Acciones derecha -->
+  <div class="nav-actions">
 
     {% if user.is_authenticated %}
-      <a href="#">Mi perfil</a>
-      <a href="{% url 'mis_reservas' %}">Mis reservas</a>
-      <a href="#">Mis compras</a>
-      <a class="danger" href="{% url 'logout' %}">Cerrar sesión</a>
+    <!-- PERFIL -->
+    <div class="profile-menu" id="profileMenu">
+      <button
+        class="profile-btn"
+        id="profileBtn"
+        type="button"
+        aria-haspopup="true"
+        aria-expanded="false"
+      >
+
+        <!-- ===== AVATAR ===== -->
+        {% include "avatars/avatar_menu.html" %}
+
+        <span class="profile-name">
+          {{ user.full_name|default:user.email }}
+        </span>
+
+        <span class="material-symbols-rounded chevron">
+          expand_more
+        </span>
+      </button>
+
+      <!-- Dropdown -->
+      <div
+        class="profile-dropdown"
+        id="profileDropdown"
+        role="menu"
+        aria-label="Menú de perfil"
+      >
+        <a href="#" role="menuitem">
+          <span class="material-symbols-rounded">account_circle</span>
+          Mi perfil
+        </a>
+
+        <a href="{% url 'mis_reservas' %}" role="menuitem">
+          <span class="material-symbols-rounded">calendar_month</span>
+          Mis reservas
+        </a>
+
+        <a href="#" role="menuitem">
+          <span class="material-symbols-rounded">receipt_long</span>
+          Mis compras
+        </a>
+
+        <div class="dropdown-sep"></div>
+
+        <a href="{% url 'logout' %}" class="danger" role="menuitem">
+          <span class="material-symbols-rounded">logout</span>
+          Cerrar sesión
+        </a>
+      </div>
+    </div>
+
     {% else %}
-      <a href="{% url 'login' %}">Iniciar sesión</a>
-      <a href="{% url 'register' %}">Crear cuenta</a>
+      <a href="{% url 'login' %}" class="btn-login">Iniciar sesión</a>
+      <a href="{% url 'register' %}" class="btn-register">Crear cuenta</a>
     {% endif %}
+
+    <!-- Burger móvil -->
+    <button
+      class="burger"
+      id="burgerBtn"
+      type="button"
+      aria-label="Abrir menú"
+    >
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+  </div>
+</header>
+
+<!-- ====================== MENÚ MÓVIL ====================== -->
+<div class="mobile-menu" id="mobileMenu">
+  <a href="{% url 'home' %}">Inicio</a>
+  <a href="{% url 'agenda_publica' %}">Reservar cita</a>
+  <a href="{% url 'shop_home' %}">Tienda</a>
+
+  <div class="mobile-sep"></div>
+
+  {% if user.is_authenticated %}
+    <a href="#">Mi perfil</a>
+    <a href="{% url 'mis_reservas' %}">Mis reservas</a>
+    <a href="#">Mis compras</a>
+    <a class="danger" href="{% url 'logout' %}">Cerrar sesión</a>
+  {% else %}
+    <a href="{% url 'login' %}">Iniciar sesión</a>
+    <a href="{% url 'register' %}">Crear cuenta</a>
+  {% endif %}
+</div>
+
+<!-- ====================== HERO ====================== -->
+<section class="hero">
+  <div class="hero-text">
+    <h1>Bienvenido a Óptica Matizvision</h1>
+
+    <p>
+      Tu visión es nuestra prioridad. Compra lentes, agenda tu examen visual
+      y descubre una experiencia óptica moderna.
+    </p>
+
+    <div class="hero-buttons">
+      <a href="{% url 'shop_home' %}" class="btn-primary">
+        Ver Tienda
+      </a>
+      <a href="{% url 'agenda_publica' %}" class="btn-outline">
+        Reservar Cita Médica
+      </a>
+    </div>
   </div>
 
+  <div class="hero-image" aria-hidden="true">
+    <span class="material-symbols-rounded hero-icon">
+      eyeglasses
+    </span>
+  </div>
+</section>
 
-  <!-- HERO -->
-  <section class="hero">
-    <div class="hero-text">
-      <h1>Bienvenido a Óptica Matizvision</h1>
-      <p>Tu visión es nuestra prioridad. Compra lentes, agenda tu examen visual y descubre una experiencia óptica moderna.</p>
+<!-- ====================== DESTACADOS ====================== -->
+<section class="featured">
+  <h2>Servicios Destacados</h2>
 
-      <div class="hero-buttons">
-        <a href="{% url 'shop_home' %}" class="btn-primary">Ver Tienda</a>
-        <a href="{% url 'agenda_publica' %}" class="btn-outline">Reservar Cita Médica</a>
-      </div>
+  <div class="featured-grid">
+    <div class="feature-box">
+      <span class="material-symbols-rounded icon">eyeglasses</span>
+      <h3>Lentes Ópticos</h3>
+      <p>Encuentra armazones y cristales de la mejor calidad.</p>
+      <a href="{% url 'shop_home' %}" class="feature-btn">Comprar</a>
     </div>
 
-    <div class="hero-image" aria-hidden="true">
-      <span class="material-symbols-rounded hero-icon">eyeglasses</span>
+    <div class="feature-box">
+      <span class="material-symbols-rounded icon">visibility</span>
+      <h3>Examen Visual</h3>
+      <p>Agenda tu hora con nuestros especialistas certificados.</p>
+      <a href="{% url 'agenda_publica' %}" class="feature-btn">Agendar</a>
     </div>
-  </section>
 
-
-  <!-- DESTACADOS -->
-  <section class="featured">
-    <h2>Servicios Destacados</h2>
-
-    <div class="featured-grid">
-      <div class="feature-box">
-        <span class="material-symbols-rounded icon">eyeglasses</span>
-        <h3>Lentes Ópticos</h3>
-        <p>Encuentra armazones y cristales de la mejor calidad.</p>
-        <a href="{% url 'shop_home' %}" class="feature-btn">Comprar</a>
-      </div>
-
-      <div class="feature-box">
-        <span class="material-symbols-rounded icon">visibility</span>
-        <h3>Examen Visual</h3>
-        <p>Agenda tu hora con nuestros especialistas certificados.</p>
-        <a href="{% url 'agenda_publica' %}" class="feature-btn">Agendar</a>
-      </div>
-
-      <div class="feature-box">
-        <span class="material-symbols-rounded icon">sunny</span>
-        <h3>Lentes de Sol</h3>
-        <p>Protección UV y estilo para todas las ocasiones.</p>
-        <a href="{% url 'shop_home' %}" class="feature-btn">Ver Más</a>
-      </div>
+    <div class="feature-box">
+      <span class="material-symbols-rounded icon">sunny</span>
+      <h3>Lentes de Sol</h3>
+      <p>Protección UV y estilo para todas las ocasiones.</p>
+      <a href="{% url 'shop_home' %}" class="feature-btn">Ver Más</a>
     </div>
-  </section>
+  </div>
+</section>
 
-    <!-- MISIÓN Y QUIÉNES SOMOS -->
-  <section class="about-section">
+<!-- ====================== QUIÉNES SOMOS ====================== -->
+<section class="about-section">
+  <div class="about-box">
+    <span class="material-symbols-rounded about-icon">target</span>
+    <h2>Nuestra Misión</h2>
+    <p>
+      Brindar soluciones ópticas integrales, accesibles y de alta calidad,
+      mejorando la salud visual y la calidad de vida de nuestros pacientes,
+      mediante atención profesional, tecnología moderna y un trato humano.
+    </p>
+  </div>
 
-    <div class="about-box">
-      <span class="material-symbols-rounded about-icon">target</span>
-      <h2>Nuestra Misión</h2>
-      <p>
-        Brindar soluciones ópticas integrales, accesibles y de alta calidad,
-        mejorando la salud visual y la calidad de vida de nuestros pacientes,
-        mediante atención profesional, tecnología moderna y un trato humano.
+  <div class="about-box">
+    <span class="material-symbols-rounded about-icon">groups</span>
+    <h2>Quiénes Somos</h2>
+    <p>
+      Óptica Matizvision es un centro óptico comprometido con la excelencia.
+      Contamos con especialistas certificados y una amplia gama de productos
+      ópticos, enfocados en ofrecer confianza, cercanía y soluciones
+      personalizadas a cada cliente.
+    </p>
+  </div>
+</section>
+
+<!-- ====================== FOOTER ====================== -->
+<footer class="footer">
+  <div class="footer-inner">
+    <div class="footer-col">
+      <h4>Óptica Matizvision</h4>
+      <p>Tu visión, nuestra prioridad.</p>
+    </div>
+
+    <div class="footer-col">
+      <h4>Accesos</h4>
+      <a href="{% url 'home' %}">Inicio</a>
+      <a href="{% url 'agenda_publica' %}">Reservar cita</a>
+      <a href="{% url 'shop_home' %}">Tienda</a>
+    </div>
+
+    <div class="footer-col">
+      <h4>Contacto</h4>
+      <p class="footer-line">
+        <span class="material-symbols-rounded footer-ico">call</span>
+        <span>+56 9 0000 0000</span>
+      </p>
+      <p class="footer-line">
+        <span class="material-symbols-rounded footer-ico">mail</span>
+        <span>contacto@matizvision.cl</span>
+      </p>
+      <p class="footer-line">
+        <span class="material-symbols-rounded footer-ico">location_on</span>
+        <span>Chile</span>
       </p>
     </div>
+  </div>
 
-    <div class="about-box">
-      <span class="material-symbols-rounded about-icon">groups</span>
-      <h2>Quiénes Somos</h2>
-      <p>
-        Óptica Matizvision es un centro óptico comprometido con la excelencia.
-        Contamos con especialistas certificados y una amplia gama de productos
-        ópticos, enfocados en ofrecer confianza, cercanía y soluciones
-        personalizadas a cada cliente.
-      </p>
-    </div>
+  <div class="footer-bottom">
+    <span>
+      © {% now "Y" %} Óptica Matizvision. Todos los derechos reservados.
+    </span>
+  </div>
+</footer>
 
-  </section>
+<!-- ====================== JS ====================== -->
+<script src="{% static 'core/js/home.js' %}"></script>
+<script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+<script src="{% static 'avatars/js/avatar_menu.js' %}"></script>
 
-  <!-- FOOTER -->
-  <footer class="footer">
-    <div class="footer-inner">
-      <div class="footer-col">
-        <h4>Óptica Matizvision</h4>
-        <p>Tu visión, nuestra prioridad.</p>
-      </div>
-
-      <div class="footer-col">
-        <h4>Accesos</h4>
-        <a href="{% url 'home' %}">Inicio</a>
-        <a href="{% url 'agenda_publica' %}">Reservar cita</a>
-        <a href="{% url 'shop_home' %}">Tienda</a>
-      </div>
-
-      <div class="footer-col">
-        <h4>Contacto</h4>
-        <p class="footer-line">
-          <span class="material-symbols-rounded footer-ico">call</span>
-          <span>+56 9 0000 0000</span>
-        </p>
-        <p class="footer-line">
-          <span class="material-symbols-rounded footer-ico">mail</span>
-          <span>contacto@matizvision.cl</span>
-        </p>
-        <p class="footer-line">
-          <span class="material-symbols-rounded footer-ico">location_on</span>
-          <span>Chile</span>
-        </p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <span>© {% now "Y" %} Óptica Matizvision. Todos los derechos reservados.</span>
-    </div>
-  </footer>
-
-  <script src="{% static 'core/js/home.js' %}"></script>
 </body>
 </html>

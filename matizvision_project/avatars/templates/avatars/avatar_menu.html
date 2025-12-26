@@ -1,0 +1,35 @@
+{% load static %}
+
+<link rel="stylesheet" href="{% static 'avatars/css/avatar_menu.css' %}">
+
+<div class="avatar-menu">
+  {% if avatar %}
+    
+    {% if avatar.tipo == "static" and avatar.imagen %}
+      <img
+        src="{{ avatar.imagen.url }}"
+        alt="{{ avatar.nombre }}"
+        class="avatar-img"
+      >
+    {% endif %}
+
+    {% if avatar.tipo == "animated" and avatar.archivo_animado %}
+      <div
+        class="avatar-lottie"
+        data-lottie-url="{{ avatar.archivo_animado.url }}"
+        aria-label="{{ avatar.nombre }}"
+      ></div>
+    {% endif %}
+
+  {% else %}
+    <!-- Fallback si no hay avatar -->
+    <img
+      src="{% static 'avatars/img/avatar_default.png' %}"
+      alt="Avatar por defecto"
+      class="avatar-img"
+    >
+  {% endif %}
+</div>
+
+<script src="https://unpkg.com/lottie-web@5.12.2/build/player/lottie.min.js"></script>
+<script src="{% static 'avatars/js/avatar_menu.js' %}"></script>

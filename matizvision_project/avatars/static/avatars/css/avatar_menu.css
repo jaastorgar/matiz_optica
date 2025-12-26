@@ -1,0 +1,129 @@
+/* =================================================
+   VARIABLES CORPORATIVAS – MATIZVISION
+================================================= */
+:root{
+  --verde:#19A860;
+  --verde-oscuro:#158E52;
+  --plomo-oscuro:#555;
+  --plomo-claro:#d9d9d9;
+  --rojo:#D64541;
+  --blanco:#ffffff;
+  --fondo:#F8FDFB;
+  --shadow:0 10px 30px rgba(0,0,0,.08);
+}
+
+/* =================================================
+   CONTENEDOR AVATAR (INCLUDE)
+================================================= */
+.avatar-menu{
+  width:40px;
+  height:40px;
+  min-width:40px;
+  min-height:40px;
+
+  border-radius:50%;
+  background-color:var(--blanco);
+  border:2px solid var(--plomo-claro);
+
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  overflow:hidden;
+
+  box-shadow:var(--shadow);
+  cursor:pointer;
+
+  transition:
+    transform .2s ease,
+    box-shadow .2s ease,
+    border-color .2s ease;
+
+  font-family:'Montserrat', system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+}
+
+/* Separación correcta dentro del botón de perfil */
+.profile-btn .avatar-menu{
+  margin-right:8px;
+}
+
+/* =================================================
+   HOVER / FOCUS (UX PREMIUM, NO INVASIVO)
+================================================= */
+.profile-btn:hover .avatar-menu,
+.avatar-menu:focus-visible{
+  transform:scale(1.06);
+  border-color:var(--verde);
+  box-shadow:0 8px 24px rgba(25,168,96,.25);
+}
+
+/* =================================================
+   AVATAR ESTÁTICO (IMG)
+================================================= */
+.avatar-img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  border-radius:50%;
+  background-color:var(--fondo);
+  display:block;
+}
+
+/* =================================================
+   AVATAR ANIMADO (LOTTIE)
+================================================= */
+.avatar-lottie{
+  width:100%;
+  height:100%;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+}
+
+/* Evita que el SVG de Lottie se desborde */
+.avatar-lottie svg{
+  width:100% !important;
+  height:100% !important;
+}
+
+/* =================================================
+   ESTADOS VISUALES (FUTURO / ESCALABLE)
+================================================= */
+
+/* Estado de alerta / error */
+.avatar-menu.error{
+  border-color:var(--rojo);
+}
+
+/* Estado correcto / confirmado */
+.avatar-menu.success{
+  border-color:var(--verde);
+}
+
+/* Estado deshabilitado */
+.avatar-menu.disabled{
+  opacity:.6;
+  cursor:default;
+  transform:none;
+  box-shadow:none;
+}
+
+/* =================================================
+   RESPONSIVE
+================================================= */
+@media (max-width:768px){
+  .avatar-menu{
+    width:36px;
+    height:36px;
+    min-width:36px;
+    min-height:36px;
+  }
+}
+
+@media (max-width:480px){
+  .avatar-menu{
+    width:32px;
+    height:32px;
+    min-width:32px;
+    min-height:32px;
+  }
+}

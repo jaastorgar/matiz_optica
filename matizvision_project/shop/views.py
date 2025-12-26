@@ -1,15 +1,26 @@
 from django.shortcuts import render, get_object_or_404, redirect
 from .models import Producto, Categoria
+from avatars.models import Avatar
 
 
 def shop_home(request):
     productos = Producto.objects.all()
     categorias = Categoria.objects.all()
 
-    return render(request, "shop/home.html", {
-        "productos": productos,
-        "categorias": categorias,
-    })
+    avatar = Avatar.objects.filter(
+        activo=True,
+        seccion="tienda"
+    ).first()
+
+    return render(
+        request,
+        "shop/home.html",
+        {
+            "productos": productos,
+            "categorias": categorias,
+            "avatar": avatar,
+        }
+    )
 
 
 def product_detail(request, slug):
