@@ -32,7 +32,7 @@
 
   <!-- Links desktop -->
   <nav class="nav-links" aria-label="Navegación principal">
-    <a class="nav-link active" href="{% url 'home' %}">Inicio</a>
+    <a class="nav-link" href="{% url 'home' %}">Inicio</a>
     <a class="nav-link" href="{% url 'agenda_publica' %}">Reservar cita</a>
     <a class="nav-link" href="{% url 'shop_home' %}">Tienda</a>
   </nav>
@@ -70,7 +70,7 @@
         role="menu"
         aria-label="Menú de perfil"
       >
-        <a href="#" role="menuitem">
+        <a href="{% url 'accounts:perfil' %}" role="menuitem">
           <span class="material-symbols-rounded">account_circle</span>
           Mi perfil
         </a>
@@ -87,7 +87,7 @@
 
         <div class="dropdown-sep"></div>
 
-        <a href="{% url 'logout' %}" class="danger" role="menuitem">
+        <a href="{% url 'accounts:logout' %}" class="danger" role="menuitem">
           <span class="material-symbols-rounded">logout</span>
           Cerrar sesión
         </a>
@@ -95,8 +95,8 @@
     </div>
 
     {% else %}
-      <a href="{% url 'login' %}" class="btn-login">Iniciar sesión</a>
-      <a href="{% url 'register' %}" class="btn-register">Crear cuenta</a>
+      <a href="{% url 'accounts:login' %}" class="btn-login">Iniciar sesión</a>
+      <a href="{% url 'accounts:register' %}" class="btn-register">Crear cuenta</a>
     {% endif %}
 
     <!-- Burger móvil -->
@@ -125,10 +125,10 @@
     <a href="#">Mi perfil</a>
     <a href="{% url 'mis_reservas' %}">Mis reservas</a>
     <a href="#">Mis compras</a>
-    <a class="danger" href="{% url 'logout' %}">Cerrar sesión</a>
+    <a class="danger" href="{% url 'accounts:logout' %}">Cerrar sesión</a>
   {% else %}
-    <a href="{% url 'login' %}">Iniciar sesión</a>
-    <a href="{% url 'register' %}">Crear cuenta</a>
+    <a href="{% url 'accounts:login' %}">Iniciar sesión</a>
+    <a href="{% url 'accounts:register' %}">Crear cuenta</a>
   {% endif %}
 </div>
 

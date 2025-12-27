@@ -3,6 +3,7 @@ from .forms import RegisterForm, LoginForm
 from django.contrib.auth import authenticate, login
 from django.contrib import messages
 from django.contrib.auth import logout
+from django.contrib.auth.decorators import login_required
 
 
 # =======================
@@ -14,7 +15,7 @@ def register_view(request):
         if form.is_valid():
             form.save()
             messages.success(request, "Tu cuenta fue creada exitosamente. Ahora puedes iniciar sesión.")
-            return redirect("login")
+            return redirect("accounts:login")
     else:
         form = RegisterForm()
 
@@ -56,3 +57,17 @@ def logout_view(request):
     logout(request)
     messages.success(request, "Has cerrado sesión correctamente.")
     return redirect("home")
+
+
+# =======================
+#  PERFIL
+# =======================
+@login_required
+def perfil_view(request):
+    user = request.user
+
+    context = {
+        "user": user,
+    }
+
+    return render(request, "accounts/perfil.html", context)
